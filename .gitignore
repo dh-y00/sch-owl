@@ -22,3 +22,21 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+*.flattened-pom.xml
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+target/
+*.iml
+.idea/
+.DS_Store
+.project
+.classpath
+.settings/
+bin/
+**.iml
+*.idea/
+*.DS_Store
