@@ -1,0 +1,103 @@
+{
+  "properties": [
+    {
+      "name": "sch.owl.server.url",
+      "type": "java.lang.String",
+      "description": "权限服务的跟路径."
+    },
+    {
+      "name": "sch.owl.server.logout-url",
+      "type": "java.lang.String",
+      "description": "触发登录退出的接口.",
+      "defaultValue": "/logout"
+    },
+    {
+      "name": "sch.owl.server.user-by-token-url",
+      "type": "java.lang.String",
+      "description": "根据token获取登录用户信息接口.",
+      "defaultValue": "/inner/remote/getUserByToken"
+    },
+    {
+      "name": "sch.owl.server.token-config-url",
+      "type": "java.lang.String",
+      "description": "获取token配置接口.",
+      "defaultValue": "/inner/remote/getTokenConfig"
+    },
+    {
+      "name": "sch.owl.server.dept-id-and-child-dept-id-url",
+      "type": "java.lang.String",
+      "description": "获取部门ID以及子类部门的ID集合.",
+      "defaultValue": "/inner/remote/getDeptIdAndChildDeptId"
+    },
+    {
+      "name": "sch.owl.server.dept-id-by-role-url",
+      "type": "java.lang.String",
+      "description": "根据角色获取部门id.",
+      "defaultValue": "/inner/remote/getDeptIdByRole"
+    },
+    {
+      "name": "sch.owl.server.post-code-by-user-id-url",
+      "type": "java.lang.String",
+      "description": "根据 user ID 获取岗位.",
+      "defaultValue": "/inner/remote/getPostCodeByUserId"
+    },
+    {
+      "name": "sch.owl.server.extra-by-dept-id-url",
+      "type": "java.lang.String",
+      "description": "获取到部门拓展属性.",
+      "defaultValue": "/inner/remote/getExtraByDeptId"
+    },
+    {
+      "name": "sch.owl.base.login-authentication-token-verity",
+      "type": "java.lang.Class",
+      "description": "登录 token 的验证器.",
+      "defaultValue": "com.rdrk.sch.owl.config.security.RemoteJwtLoginAuthenticationTokenVerity"
+    },
+    {
+      "name": "sch.owl.base.token-config",
+      "type": "java.lang.Class",
+      "description": "token 配置处理器.",
+      "defaultValue": "com.rdrk.sch.owl.token.RemoteTokenConfig"
+    },
+    {
+      "name": "sch.owl.base.remote-clazz",
+      "type": "java.lang.Class",
+      "description": "远程权限系统处理器.",
+      "defaultValue": "com.rdrk.sch.owl.HttpRemoteUpmsServe"
+    },
+    {
+      "name": "sch.owl.base.ignore",
+      "type": "java.lang.String",
+      "description": "不做权限校验的配置.",
+      "defaultValue": "/swagger-ui.html,/swagger-resources/**,/webjars/**,/*/api-docs,/druid/**,/qywx/login,/login,/register,/captchaImage,/api/**,/m3u8/**,/list/**"
+    },
+    {
+      "name": "sch.owl.base.application-name",
+      "type": "java.lang.String",
+      "description": "应用名."
+    },
+    {
+      "name": "sch.owl.sse.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否开启sse.",
+      "defaultValue": false
+    },
+    {
+      "name": "sch.owl.sse.sse-connect-url",
+      "type": "java.lang.String",
+      "description": "连接 sse的连接.",
+      "defaultValue": "/inner/sse/connect/create"
+    },
+    {
+      "name": "sch.owl.sse.job.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否开启job.",
+      "defaultValue": false
+    },{
+      "name": "sch.owl.sse.job.confirm-job-url",
+      "type": "java.lang.String",
+      "description": "确认job URL.",
+      "defaultValue": "/inner/remote/job/confirm"
+    }
+  ]
+}
