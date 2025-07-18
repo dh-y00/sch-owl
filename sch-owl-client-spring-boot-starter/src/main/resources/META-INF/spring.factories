@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.rdrk.upms.config.UpmsAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.sch.owl.config.OwlAutoConfiguration

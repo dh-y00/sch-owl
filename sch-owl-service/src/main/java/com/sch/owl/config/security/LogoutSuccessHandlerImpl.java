@@ -2,14 +2,11 @@ package com.sch.owl.config.security;
 
 import com.alibaba.fastjson2.JSON;
 import com.rdrk.rsf.framework.utils.string.StringUtils;
-import com.rdrk.upms.BaseResponse;
-import com.rdrk.upms.config.factory.AsyncFactory;
-import com.rdrk.upms.config.factory.AsyncManager;
-import com.rdrk.upms.constant.Constants;
-import com.rdrk.upms.model.LoginUser;
-import com.rdrk.upms.service.TokenService;
-import com.rdrk.upms.token.TokenDeal;
-import com.rdrk.upms.utils.ServletUtils;
+import com.sch.owl.BaseResponse;
+import com.sch.owl.application.service.auth.TokenAppService;
+import com.sch.owl.model.UserDetail;
+import com.sch.owl.token.TokenDeal;
+import com.sch.owl.utils.ServletUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -28,29 +25,28 @@ import java.io.IOException;
 @Component
 public class LogoutSuccessHandlerImpl implements LogoutSuccessHandler
 {
+
     @Autowired
-    private TokenService tokenService;
+    private TokenAppService tokenAppService;
 
     @Autowired
     private TokenDeal tokenDeal;
 
     /**
      * 退出处理
-     * 
-     * @return
+     *
      */
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException
     {
-        LoginUser loginUser = tokenService.getLoginUser(tokenDeal.getToken(request));
-        if (StringUtils.isNotNull(loginUser))
+        UserDetail userDetail = tokenAppService.getLoginUserByToken(tokenDeal.getToken(request));
+        if (StringUtils.isNotNull(userDetail))
         {
-            String userName = loginUser.getUsername();
             // 删除用户缓存记录
-            tokenService.delLoginUser(loginUser.getToken());
-            // 记录用户退出日志
-            AsyncManager.me().execute(AsyncFactory.recordLogininfor(userName, Constants.LOGOUT, "退出成功"));
+            tokenAppService.removeByUserName(userDetail.getUsername());
+            // todo 记录用户退出日志
+//            AsyncManager.me().execute(AsyncFactory.recordLogininfor(userName, Constants.LOGOUT, "退出成功"));
         }
         ServletUtils.renderString(response, JSON.toJSONString(BaseResponse.success("退出成功")));
     }

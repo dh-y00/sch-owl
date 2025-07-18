@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sch.owl.mapper.OwlDeptMapper">
+<mapper namespace="com.sch.owl.infrastructure.mapper.org.OwlDeptMapper">
 
     <select id="queryDeptIdAndChildDeptId" resultType="java.lang.Long" parameterType="java.lang.Long">
         SELECT dept_id FROM upms_dept WHERE dept_id = #{deptId} or find_in_set(#{deptId}, ancestors)

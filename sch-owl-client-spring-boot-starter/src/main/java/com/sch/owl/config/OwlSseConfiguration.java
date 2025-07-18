@@ -1,7 +1,7 @@
 package com.sch.owl.config;
 
 import cn.hutool.core.util.IdUtil;
-import com.sch.owl.IRemoteUpmsServe;
+import com.sch.owl.IRemoteOwlServe;
 import com.sch.owl.cache.OwlDeptSseEvent;
 import com.sch.owl.cache.OwlUserSseEvent;
 import com.sch.owl.config.listener.SseApplicationListener;
@@ -51,12 +51,12 @@ public class OwlSseConfiguration implements ApplicationContextAware{
     }
 
     @Bean
-    public OwlUserSseEvent upmsUserSseEvent(IRemoteUpmsServe remoteUpmsServe) {
+    public OwlUserSseEvent upmsUserSseEvent(IRemoteOwlServe remoteUpmsServe) {
         return new OwlUserSseEvent(remoteUpmsServe);
     }
 
     @Bean
-    public OwlDeptSseEvent upmsDeptSseEvent(IRemoteUpmsServe remoteUpmsServe) {
+    public OwlDeptSseEvent upmsDeptSseEvent(IRemoteOwlServe remoteUpmsServe) {
         return new OwlDeptSseEvent(remoteUpmsServe);
     }
 }

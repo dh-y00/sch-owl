@@ -1,10 +1,10 @@
 package com.sch.owl.config.security;
 
 import com.rdrk.rsf.framework.utils.string.StringUtils;
-import com.rdrk.upms.api.ILoginAuthenticationTokenVerity;
-import com.rdrk.upms.model.LoginUser;
-import com.rdrk.upms.service.TokenService;
-import com.rdrk.upms.utils.SecurityUtils;
+import com.sch.owl.ILoginAuthenticationTokenVerity;
+import com.sch.owl.application.service.auth.TokenAppService;
+import com.sch.owl.model.UserDetail;
+import com.sch.owl.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 public class JwtLoginAuthenticationTokenVerity implements ILoginAuthenticationTokenVerity {
 
     @Autowired
-    private TokenService tokenService;
+    private TokenAppService tokenAppService;
 
     @Override
     public void verity(String token, HttpServletRequest request) {
-        LoginUser loginUser = tokenService.getLoginUser(token);
-        if (StringUtils.isNotNull(loginUser) && StringUtils.isNull(SecurityUtils.getAuthentication()))
+        UserDetail userDetail = tokenAppService.getLoginUserByToken(token);
+        if (StringUtils.isNotNull(userDetail) && StringUtils.isNull(SecurityUtils.getAuthentication()))
         {
-            tokenService.verifyToken(loginUser);
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
+            tokenAppService.verifyUserDetail(userDetail);
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }

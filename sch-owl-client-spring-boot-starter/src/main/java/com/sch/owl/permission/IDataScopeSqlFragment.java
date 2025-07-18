@@ -1,7 +1,7 @@
 package com.sch.owl.permission;
 
 import com.rdrk.rsf.framework.utils.ApplicationContextUtils;
-import com.sch.owl.model.LoginUserInfo;
+import com.sch.owl.model.LoginUser;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
@@ -18,7 +18,7 @@ public interface IDataScopeSqlFragment {
      * @param user 当前登录用户信息
      * @return 返回代码片段
      */
-    String getSql(String deptAlias, String userAlias, LoginUserInfo user, String dataScope);
+    String getSql(String deptAlias, String userAlias, LoginUser user, String dataScope);
 
     /**
      * 代码片段code
@@ -26,7 +26,7 @@ public interface IDataScopeSqlFragment {
      */
     String code();
 
-    static String getDataScopeSqlFragment(String code, String deptAlias, String userAlias, LoginUserInfo user, String dataScope) {
+    static String getDataScopeSqlFragment(String code, String deptAlias, String userAlias, LoginUser user, String dataScope) {
         if(StringUtils.isBlank(code)) {
             return null;
         }

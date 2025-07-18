@@ -1,8 +1,8 @@
 package com.sch.owl.config;
 
-import com.sch.owl.HttpRemoteUpmsServe;
+import com.sch.owl.HttpRemoteOwlServe;
 import com.sch.owl.ILoginAuthenticationTokenVerity;
-import com.sch.owl.IRemoteUpmsServe;
+import com.sch.owl.IRemoteOwlServe;
 import com.sch.owl.ITokenConfig;
 import com.sch.owl.config.security.RemoteJwtLoginAuthenticationTokenVerity;
 import com.sch.owl.properties.OwlBaseProperties;
@@ -25,10 +25,10 @@ public class OwlRemoteConfiguration implements ApplicationContextAware{
     private Logger logger = LoggerFactory.getLogger(OwlRemoteConfiguration.class);
 
     @Bean
-    public IRemoteUpmsServe remoteUpmsServe(OwlServerProperties umpsServerProperties, OwlBaseProperties umpsBaseProperties) {
-        Class<? extends IRemoteUpmsServe> remoteClazz = umpsBaseProperties.getRemoteClazz();
-        if(Objects.isNull(remoteClazz) || Objects.equals(remoteClazz, HttpRemoteUpmsServe.class)) {
-            return new HttpRemoteUpmsServe(umpsServerProperties);
+    public IRemoteOwlServe remoteUpmsServe(OwlServerProperties umpsServerProperties, OwlBaseProperties umpsBaseProperties) {
+        Class<? extends IRemoteOwlServe> remoteClazz = umpsBaseProperties.getRemoteClazz();
+        if(Objects.isNull(remoteClazz) || Objects.equals(remoteClazz, HttpRemoteOwlServe.class)) {
+            return new HttpRemoteOwlServe(umpsServerProperties);
         }
         return applicationContext.getBean(remoteClazz);
     }
@@ -43,7 +43,7 @@ public class OwlRemoteConfiguration implements ApplicationContextAware{
     }
 
     @Bean
-    public ITokenConfig tokenConfig(OwlBaseProperties umpsBaseProperties, IRemoteUpmsServe remoteUpmsServe) {
+    public ITokenConfig tokenConfig(OwlBaseProperties umpsBaseProperties, IRemoteOwlServe remoteUpmsServe) {
         Class<? extends ITokenConfig> tokenConfig = umpsBaseProperties.getTokenConfig();
         if(Objects.isNull(tokenConfig) || Objects.equals(tokenConfig, RemoteTokenConfig.class)) {
             RemoteTokenConfig remoteTokenConfig = new RemoteTokenConfig();
@@ -61,7 +61,7 @@ public class OwlRemoteConfiguration implements ApplicationContextAware{
     }
 
     @Bean
-    public ILoginAuthenticationTokenVerity remoteJwtLoginAuthenticationTokenVerity(IRemoteUpmsServe remoteUpmsServe) {
+    public ILoginAuthenticationTokenVerity remoteJwtLoginAuthenticationTokenVerity(IRemoteOwlServe remoteUpmsServe) {
         return new RemoteJwtLoginAuthenticationTokenVerity(remoteUpmsServe);
     }
 

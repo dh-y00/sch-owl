@@ -1,7 +1,7 @@
 package com.sch.owl.service.db;
 
-import com.sch.owl.entity.SysLoginHistory;
-import com.sch.owl.mapper.SysLoginHistoryMapper;
+import com.sch.owl.infrastructure.entity.auth.SysLoginHistory;
+import com.sch.owl.infrastructure.mapper.auth.SysLoginHistoryMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

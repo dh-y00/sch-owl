@@ -1,6 +1,6 @@
 package com.sch.owl.token;
 
-import com.sch.owl.IRemoteUpmsServe;
+import com.sch.owl.IRemoteOwlServe;
 import com.sch.owl.ITokenConfig;
 import com.sch.owl.response.TokenConfigResponse;
 import org.apache.commons.lang3.StringUtils;
@@ -10,7 +10,7 @@ public class RemoteTokenConfig implements ITokenConfig {
 
     private String headerTokenName;
 
-    private IRemoteUpmsServe remoteUpmsServe;
+    private IRemoteOwlServe remoteUpmsServe;
 
     @Override
     public String getHeaderTokenName() {
@@ -21,7 +21,7 @@ public class RemoteTokenConfig implements ITokenConfig {
         return headerTokenName;
     }
 
-    public void setRemoteUpmsServe(IRemoteUpmsServe remoteUpmsServe) {
+    public void setRemoteUpmsServe(IRemoteOwlServe remoteUpmsServe) {
         this.remoteUpmsServe = remoteUpmsServe;
     }
 

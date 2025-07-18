@@ -17,20 +17,20 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.sch.owl</groupId>
+            <artifactId>sch-owl-application</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.sch.owl</groupId>
             <artifactId>sch-owl-client-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sch.owl</groupId>
+            <artifactId>sch-owl-infrastructure</artifactId>
         </dependency>
 
         <!-- 获取系统信息 -->
@@ -39,23 +39,13 @@
             <artifactId>oshi-core</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.rdrk.rsf</groupId>
-            <artifactId>rsf-db</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.rdrk.rsf</groupId>
             <artifactId>rsf-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>pro.fessional</groupId>
             <artifactId>kaptcha</artifactId>
@@ -71,4 +61,27 @@
             <artifactId>rsf-mq</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>owl</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>com.sch.owl.OwlApplication</mainClass>
+                    <skip>false</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

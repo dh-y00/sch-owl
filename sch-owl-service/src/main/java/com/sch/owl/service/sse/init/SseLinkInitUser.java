@@ -1,7 +1,7 @@
 package com.sch.owl.service.sse.init;
 
 import com.sch.owl.constant.SseEventEnum;
-import com.sch.owl.mapper.OwlUserMapper;
+import com.sch.owl.infrastructure.mapper.org.OwlUserMapper;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

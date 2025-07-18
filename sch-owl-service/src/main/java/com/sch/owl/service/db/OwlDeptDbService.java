@@ -1,13 +1,14 @@
 package com.sch.owl.service.db;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.sch.owl.entity.OwlDept;
-import com.sch.owl.mapper.OwlDeptMapper;
+import com.sch.owl.infrastructure.entity.org.OwlDept;
+import com.sch.owl.infrastructure.mapper.org.OwlDeptMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sch.owl.pojo.dto.DeptListSearchDto;
 import com.sch.owl.pojo.vo.DeptListVo;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -30,7 +31,8 @@ public class OwlDeptDbService extends ServiceImpl<OwlDeptMapper, OwlDept> {
     }
 
     public List<DeptListVo> list(DeptListSearchDto deptListSearchDto){
-        return baseMapper.list(deptListSearchDto);
+//        return baseMapper.list(deptListSearchDto);
+        return Collections.emptyList();
     }
 
     public List<OwlDept> queryByParent(Long parentId) {

@@ -4,8 +4,7 @@ import com.rdrk.rsf.framework.utils.string.StringUtils;
 import com.sch.owl.constant.Constants;
 import com.sch.owl.constant.HttpStatus;
 import com.sch.owl.exception.ServiceException;
-import com.sch.owl.model.LoginUser;
-import com.sch.owl.model.RoleInfoVo;
+import com.sch.owl.model.UserDetail;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,8 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.PatternMatchUtils;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 安全服务工具类
@@ -31,26 +28,11 @@ public class SecurityUtils
     {
         try
         {
-            return getLoginUser().getUserId();
+            return getLoginUser().getLoginTime();
         }
         catch (Exception e)
         {
             throw new ServiceException("获取用户ID异常", HttpStatus.UNAUTHORIZED);
-        }
-    }
-
-    /**
-     * 获取部门ID
-     **/
-    public static Long getDeptId()
-    {
-        try
-        {
-            return getLoginUser().getDeptId();
-        }
-        catch (Exception e)
-        {
-            throw new ServiceException("获取部门ID异常", HttpStatus.UNAUTHORIZED);
         }
     }
 
@@ -72,11 +54,11 @@ public class SecurityUtils
     /**
      * 获取用户
      **/
-    public static LoginUser getLoginUser()
+    public static UserDetail getLoginUser()
     {
         try
         {
-            return (LoginUser) getAuthentication().getPrincipal();
+            return (UserDetail) getAuthentication().getPrincipal();
         }
         catch (Exception e)
         {
@@ -142,10 +124,10 @@ public class SecurityUtils
      * @param permission 权限字符串
      * @return 用户是否具备某权限
      */
-    public static boolean hasPermi(String permission)
-    {
-        return hasPermi(getLoginUser().getPermissions(), permission);
-    }
+//    public static boolean hasPermi(String permission)
+//    {
+//        return hasPermi(getLoginUser().getPermissions(), permission);
+//    }
 
     /**
      * 判断是否包含权限
@@ -166,12 +148,12 @@ public class SecurityUtils
      * @param role 角色标识
      * @return 用户是否具备某角色
      */
-    public static boolean hasRole(String role)
-    {
-        List<RoleInfoVo> roleList = getLoginUser().getUser().getRoles();
-        Collection<String> roles = roleList.stream().map(RoleInfoVo::getRoleKey).collect(Collectors.toSet());
-        return hasRole(roles, role);
-    }
+//    public static boolean hasRole(String role)
+//    {
+//        List<RoleInfoVo> roleList = getLoginUser().getUser().getRoles();
+//        Collection<String> roles = roleList.stream().map(RoleInfoVo::getRoleKey).collect(Collectors.toSet());
+//        return hasRole(roles, role);
+//    }
 
     /**
      * 判断是否包含角色

@@ -34,7 +34,7 @@ import java.util.Map;
 @EnableScheduling
 @EnableRsfFramework
 //@AutoConfigureOrder(99)
-@Import({SecurityConfig.class, OwlRemoteConfiguration.class, OwlPermissionConfiguration.class, OwlSseConfiguration.class})
+@Import({SecurityConfig.class, OwlRemoteConfiguration.class, OwlSseConfiguration.class})
 public class OwlAutoConfiguration implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;

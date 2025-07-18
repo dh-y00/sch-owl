@@ -1,7 +1,7 @@
 package com.sch.owl.service.db;
 
-import com.sch.owl.entity.OwlPost;
-import com.sch.owl.mapper.OwlPostMapper;
+import com.sch.owl.infrastructure.entity.org.OwlPost;
+import com.sch.owl.infrastructure.mapper.org.OwlPostMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

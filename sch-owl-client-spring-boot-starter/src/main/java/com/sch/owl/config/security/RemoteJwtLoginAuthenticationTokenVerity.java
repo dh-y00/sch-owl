@@ -2,8 +2,10 @@ package com.sch.owl.config.security;
 
 import com.rdrk.rsf.framework.utils.string.StringUtils;
 import com.sch.owl.ILoginAuthenticationTokenVerity;
-import com.sch.owl.IRemoteUpmsServe;
+import com.sch.owl.IRemoteOwlServe;
+import com.sch.owl.model.UserDetail;
 import com.sch.owl.params.ClientGetUserParam;
+import com.sch.owl.utils.SecurityUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -13,9 +15,9 @@ import java.util.Objects;
 
 public class RemoteJwtLoginAuthenticationTokenVerity implements ILoginAuthenticationTokenVerity {
 
-    private IRemoteUpmsServe remoteUpmsServe;
+    private IRemoteOwlServe remoteUpmsServe;
 
-    public RemoteJwtLoginAuthenticationTokenVerity(IRemoteUpmsServe remoteUpmsServe) {
+    public RemoteJwtLoginAuthenticationTokenVerity(IRemoteOwlServe remoteUpmsServe) {
         this.remoteUpmsServe = remoteUpmsServe;
     }
 
@@ -24,9 +26,9 @@ public class RemoteJwtLoginAuthenticationTokenVerity implements ILoginAuthentica
         ClientGetUserParam clientGetUserParam = new ClientGetUserParam();
         clientGetUserParam.setToken(token);
         clientGetUserParam.setNeedVerify(StringUtils.isNull(SecurityUtils.getAuthentication()));
-        LoginUser loginUser = remoteUpmsServe.getUserInfoByToken(clientGetUserParam, LoginUser.class);
-        if(Objects.nonNull(loginUser) && clientGetUserParam.isNeedVerify()) {
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
+        UserDetail userDetail = remoteUpmsServe.getUserInfoByToken(clientGetUserParam, UserDetail.class);
+        if(Objects.nonNull(userDetail) && clientGetUserParam.isNeedVerify()) {
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }

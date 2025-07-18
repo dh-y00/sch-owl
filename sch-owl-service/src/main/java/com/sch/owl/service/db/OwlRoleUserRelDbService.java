@@ -1,10 +1,9 @@
 package com.sch.owl.service.db;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.sch.owl.entity.OwlRoleUserRel;
-import com.sch.owl.mapper.OwlRoleUserRelMapper;
+import com.sch.owl.infrastructure.entity.org.OwlRoleUserRel;
+import com.sch.owl.infrastructure.mapper.org.OwlRoleUserRelMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.sch.owl.model.LoginUser;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 

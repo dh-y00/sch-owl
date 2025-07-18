@@ -1,8 +1,8 @@
 package com.sch.owl.service.db;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.sch.owl.entity.OwlApplicationEle;
-import com.sch.owl.mapper.OwlApplicationEleMapper;
+import com.sch.owl.infrastructure.entity.resource.OwlApplicationEle;
+import com.sch.owl.infrastructure.mapper.resource.OwlApplicationEleMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

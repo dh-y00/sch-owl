@@ -1,7 +1,7 @@
 package com.sch.owl.service.db;
 
-import com.sch.owl.entity.OwlRole;
-import com.sch.owl.mapper.OwlRoleMapper;
+import com.sch.owl.infrastructure.entity.auth.OwlRole;
+import com.sch.owl.infrastructure.mapper.auth.OwlRoleMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

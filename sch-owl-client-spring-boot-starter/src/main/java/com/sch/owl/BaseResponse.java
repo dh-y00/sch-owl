@@ -1,10 +1,13 @@
 package com.sch.owl;
 
-import com.sch.owl.constant.HttpStatus;
 import com.sch.owl.constant.ResponseConstants;
+import lombok.Data;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Setter
+@Data
 public class BaseResponse<T> implements Serializable {
 
 
@@ -39,29 +42,6 @@ public class BaseResponse<T> implements Serializable {
         return new BaseResponse(code, message);
     }
 
-    public String getCode() {
-        return this.code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return this.msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
 }
 
 

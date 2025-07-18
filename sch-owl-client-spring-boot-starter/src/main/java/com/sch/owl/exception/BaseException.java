@@ -1,7 +1,6 @@
 package com.sch.owl.exception;
 
 import com.rdrk.rsf.framework.utils.string.StringUtils;
-import com.rdrk.upms.utils.MessageUtils;
 
 
 /**
@@ -67,7 +66,8 @@ public class BaseException extends RuntimeException
         String message = null;
         if (!StringUtils.isEmpty(code))
         {
-            message = MessageUtils.message(code, args);
+//            message = MessageUtils.message(code, args);
+            message = code;
         }
         if (message == null)
         {

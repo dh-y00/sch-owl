@@ -24,6 +24,26 @@
                 <artifactId>sch-owl-client-spring-boot-starter</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>com.sch.owl</groupId>
+                <artifactId>sch-owl-domain</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sch.owl</groupId>
+                <artifactId>sch-owl-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sch.owl</groupId>
+                <artifactId>sch-owl-infrastructure</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sch.owl</groupId>
+                <artifactId>sch-owl-application</artifactId>
+                <version>${revision}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -1,7 +1,7 @@
 package com.sch.owl.cache;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.sch.owl.IRemoteUpmsServe;
+import com.sch.owl.IRemoteOwlServe;
 import com.sch.owl.constant.SseEventEnum;
 import com.sch.owl.sse.ISseEvent;
 import org.slf4j.Logger;
@@ -13,9 +13,9 @@ public class OwlDeptSseEvent implements ISseEvent {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private IRemoteUpmsServe remoteUpmsServe;
+    private IRemoteOwlServe remoteUpmsServe;
 
-    public OwlDeptSseEvent(IRemoteUpmsServe remoteUpmsServe) {
+    public OwlDeptSseEvent(IRemoteOwlServe remoteUpmsServe) {
         this.remoteUpmsServe = remoteUpmsServe;
     }
 

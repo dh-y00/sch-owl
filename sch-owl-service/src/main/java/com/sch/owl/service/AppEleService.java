@@ -1,8 +1,8 @@
 package com.sch.owl.service;
 
 import com.rdrk.rsf.framework.constant.SystemConstant;
-import com.sch.owl.constant.EleConstant;
-import com.sch.owl.entity.OwlApplicationEle;
+import com.sch.owl.domain.constants.resource.EleConstant;
+import com.sch.owl.infrastructure.entity.resource.OwlApplicationEle;
 import com.sch.owl.pojo.vo.EleVo;
 import com.sch.owl.service.db.OwlApplicationEleDbService;
 import org.apache.commons.lang3.StringUtils;
